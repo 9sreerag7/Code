@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+  <body>
+      #include stdio.h><br>
+void selectionSort(int a[], int n) {<br>
+    for (int i = 0; i < n - 1; i++) {<br>
+        int minIndex = i;<br>
+        for (int j = i + 1; j < n; j++) {<br>
+            if (a[j] < a[minIndex]) {<br>
+                minIndex = j;<br>
+            }<br>
+        }<br>
+        int temp = a[minIndex];<br>
+        a[minIndex] = a[i];<br>
+        a[i] = temp;<br>
+    }<br>
+}<br>
+
+void printArray(int a[], int n) {<br>
+    for (int i = 0; i < n; i++) {<br>
+        printf("%d ", a[i]);<br>
+    }<br>
+    printf("\n");<br>
+}<br>
+
+int main() {<br>
+    int a[50], n;<br>
+
+    printf("Enter the number of elements: ")<br>;
+    scanf("%d", &n);<br>
+
+    printf("Enter the elements: ");<br>
+    for (int i = 0; i < n; i++) {<br>
+        scanf("%d", &a[i]);<br>
+    }<br>
+
+    selectionSort(a, n);<br>
+
+    printf("Sorted array: ");<br>
+    printArray(a, n);<br>
+
+    return 0;<br>
+}<br>
+  </body>
+</html>
