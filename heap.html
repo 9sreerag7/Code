@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+  <body>
+      #include stdio.h<br>
+void heapify(int arr[], int n, int i) {<br>
+    int largest = i;     <br>  
+    int left = 2 * i + 1;   <br>
+    int right = 2 * i + 2; <br>
+    if (left < n && arr[left] > arr[largest])<br>
+        largest = left;<br>
+
+    if (right < n && arr[right] > arr[largest])<br>
+        largest = right;<br>
+    if (largest != i) {<br>
+        int temp = arr[i];<br>
+        arr[i] = arr[largest];<br>
+        arr[largest] = temp;<br>
+        heapify(arr, n, largest);<br>
+    }<br>
+}<br>
+
+void heapSort(int arr[], int n) {<br>
+    for (int i = n / 2 - 1; i >= 0; i--)<br>
+        heapify(arr, n, i);<br>
+
+ 
+    for (int i = n - 1; i > 0; i--) {<br>
+       
+        int temp = arr[0];<br>
+        arr[0] = arr[i];<br>
+        arr[i] = temp;<br>
+
+      
+        heapify(arr, i, 0);<br>
+    }<br>
+}<br>
+
+void printArray(int arr[], int n) {<br>
+    for (int i = 0; i < n; i++) {<br>
+        printf("%d ", arr[i]);<br>
+    }<br>
+    printf("\n");<br>
+}<br>
+
+int main() {<br>
+    int arr[50], n;<br>
+
+    printf("Enter the number of elements: ");<br>
+    scanf("%d", &n);<br>
+
+    printf("Enter the elements: ");<br>
+    for (int i = 0; i < n; i++) {<br>
+        scanf("%d", &arr[i]);<br>
+    }<br>
+
+    heapSort(arr, n);<br>
+
+    printf("Sorted array: ");<br>
+    printArray(arr, n);<br>
+    return 0;<br>
+}<br>
+  </body>
+</html>
