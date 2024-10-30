@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+  <body>
+      #include stdio.h <br>
+
+void swap(int *a, int *b) {
+    int temp = *a;<br>
+    *a = *b;<br>
+    *b = temp;<br>
+}<br>
+
+int partition(int a[], int low, int high) {<br>
+    int pivot = a[low];<br>
+    int i = low + 1;<br>
+    int j = high;<br>
+
+    while (j>i) {<br>
+        while (i <= high && a[i] <= pivot) {<br>
+            i++;<br>
+        }<br>
+    
+        while (j >= low && a[j] > pivot) {<br>
+            j--;<br>
+        }<br>
+        if (i >= j) {<br>
+            break;<br>
+        }<br>
+        swap(&a[i], &a[j]);<br>
+    }<br>
+    swap(&a[low], &a[j]);<br>
+    return j;<br>
+}<br>
+
+void quickSort(int a[], int low, int high) {<br>
+    if (low < high) {<br>
+        int p = partition(a, low, high);<br>
+        quickSort(a, low, p - 1);<br>
+        quickSort(a, p + 1, high);<br>
+    }<br>
+}<br>
+
+void printArray(int a[], int n) {<br>
+    for (int i = 0; i < n; i++) {<br>
+        printf("%d ", a[i]);<br>
+    }<br>
+    printf("\n");<br>
+}<br>
+
+int main() {<br>
+    int a[50], n;<br>
+    
+    printf("Enter the limit of the array: ");<br>
+    scanf("%d", &n);<br>
+    
+    printf("Enter the elements: ");<br>
+    for (int i = 0; i < n; i++) {<br>
+        scanf("%d", &a[i]);<br>
+    }<br>
+    
+    quickSort(a, 0, n - 1);<br>
+    
+    printf("Sorted array: ");<br>
+    printArray(a, n);<br>
+    
+    return 0;<br>
+}<br>
+  </body>
+</html>
