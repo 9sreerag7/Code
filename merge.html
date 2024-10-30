@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+  <body>
+      #include stdio.h<br>
+void merge(int a[], int low, int mid, int high) {<br>
+    int i = low, j = mid + 1, k = low;<br>
+    int b[50]; <br>
+    while (i <= mid && j <= high) {<br>
+        if (a[i] < a[j]) {<br>
+            b[k++] = a[i++];<br>
+        } else {<br>
+            b[k++] = a[j++];<br>
+        }<br>
+    }<br>
+    while (i <= mid) {<br>
+        b[k++] = a[i++];<br>
+    }<br>
+    while (j <= high) {<br>
+        b[k++] = a[j++];<br>
+    }<br>
+    for (i = low; i <= high; i++) {<br>
+        a[i] = b[i];<br>
+    }<br>
+}<br>
+void mergeSort(int a[], int low, int high) {<br>
+    if (low < high) {<br>
+        int mid = (low + high) / 2;<br>
+        mergeSort(a, low, mid);<br>
+        mergeSort(a, mid + 1, high);<br>
+        merge(a, low, mid, high);<br>
+    }<br>
+}<br>
+void printArray(int a[], int n) {<br>
+    for (int i = 0; i < n; i++) {<br>
+        printf("%d ", a[i]);<br>
+    }<br>
+    printf("\n");<br>
+}<br>
+
+int main() {<br>
+    int a[50], n;<br>
+    
+    printf("Enter the limit of the array: ");<br>
+    scanf("%d", &n);<br>
+    
+    printf("Enter the elements: ");<br>
+    for (int i = 0; i < n; i++) {<br>
+        scanf("%d", &a[i]);<br>
+    }<br>
+   
+    mergeSort(a, 0, n - 1);<br>
+    
+    printf("Sorted array: ");<br>
+    printArray(a, n);<br>
+    return 0;<br>
+}<br>
+  </body>
+</html>
