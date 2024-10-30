@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+  <body>
+      #include stdio.h<br>
+
+void insertionSort(int a[], int n){<br>
+    for (int i = 1; i < n; i++) {<br>
+        int key = a[i];<br>
+        int j = i - 1;<br>
+       
+        while (j >= 0 && a[j] > key) {<br>
+            a[j + 1] = a[j];<br>
+            j = j - 1;<br>
+        }<br>
+        a[j + 1] = key;<br>
+    }<br>
+}<br>
+<br>
+void printArray(int a[], int n) {<br>
+    for (int i = 0; i < n; i++) {<br>
+        printf("%d ", a[i]);<br>
+    }<br>
+    printf("\n");<br>
+}<br>
+
+int main() {<br>
+    int a[50], n;<br>
+
+    printf("Enter the number of elements: ")<br>;
+    scanf("%d", &n);<br>
+
+    printf("Enter the elements: ");<br>
+    for (int i = 0; i < n; i++) {<br>
+        scanf("%d", &a[i]);<br>
+    }<br>
+
+    insertionSort(a, n);<br>
+
+    printf("Sorted array: ");<br>
+    printArray(a, n);<br>
+
+    return 0;<br>
+}<br>
+  </body>
+</html>
